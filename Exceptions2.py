@@ -43,11 +43,15 @@ class ExceptionsDemo:
             print('AttributeError detected')
 
     def check_positive(self, number):
-        if number < 0:
-            raise MyException("The number must be positive.")
-        else:
-            print("Valid number:", number)
-
+        try:
+            if number < 0:
+                raise MyException("The number must be positive.")
+            else:
+                print("Valid number:", number)
+        except MyException as e:
+            print("MyException detected:", e)
+        except TypeError:
+            print('TypeError detected')
 
 
 class MyException(Exception):
